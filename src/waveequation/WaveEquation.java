@@ -9,7 +9,7 @@ import javax.swing.*;
 public class WaveEquation extends JPanel implements Runnable, MouseListener, MouseMotionListener{
 
     private static final int WIDTH = 800, HEIGHT = 600, N = 800;
-    private Particle[] particles = new Particle[N];
+    private final Particle[] particles = new Particle[N];
     private int mouseX, mouseY;
     private boolean mouseActive = false;
     
@@ -17,6 +17,7 @@ public class WaveEquation extends JPanel implements Runnable, MouseListener, Mou
         setPreferredSize(new Dimension(WIDTH, HEIGHT));
         
         addMouseListener(this);
+        addMouseMotionListener(this);
         
         for(int i = 0; i < N; i++)
             particles[i] = new Particle(i * 1.0 / (N - 1) * WIDTH, 0);

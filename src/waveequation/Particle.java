@@ -3,7 +3,7 @@ package waveequation;
 
 public class Particle {
 
-    private static final double strength = 0.2, damp = -0.001;
+    private static final double strength = 0.2, damp = 0.001;
     double x, y, vx, vy;
 
     public Particle(double x, double vy){
@@ -27,7 +27,7 @@ public class Particle {
 //        double k3 = (y + k2 * dt * dt * strength / 16 + vy * dt / 2) - average;
 //        double k4 = (y + k3 * dt * dt * strength / 2 + vy * dt) - average;
         
-        vy -= (strength - damp * Math.signum(k1) * vy) * dt * k1;// / 6 * (k1 + 2 * k2 + 2 * k3 + k4);
+        vy -= (strength + damp * Math.signum(k1) * vy) * dt * k1;// / 6 * (k1 + 2 * k2 + 2 * k3 + k4);
     }
     
     public void move(double t){
